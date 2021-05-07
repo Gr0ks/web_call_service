@@ -1,4 +1,4 @@
-package signal
+package chatSignal
 
 import (
 	"encoding/json"
