@@ -23,8 +23,9 @@ func broadcaster() {
 				err := client.Conn.WriteJSON(msg.Message)
 
 				if err != nil {
-					log.Fatal(err)
+					log.Println(err)
 					client.Conn.Close()
+					continue
 				}
 			}
 		}

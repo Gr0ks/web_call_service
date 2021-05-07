@@ -8,17 +8,15 @@ const Room = (props) => {
     const webSocketRef = useRef();
 
     const openCamera = async () => {
-        const allDevices = await navigator.mediaDevices.enumerateDevices();
-        const cameras = allDevices.filter(
-            (device) => device.kind == "videoinput"
-        );
-        console.log(cameras);
+        // const allDevices = await navigator.mediaDevices.enumerateDevices();
+        // const cameras = allDevices.filter(
+        //     (device) => device.kind == "videoinput"
+        // );
+        // console.log(cameras);
 
         const constraints = {
             audio: true,
-            video: {
-                deviceId: cameras[0].deviceId,
-            },
+            video: true,
         };
 
         try {
@@ -34,7 +32,7 @@ const Room = (props) => {
             userStream.current = stream;
 
             webSocketRef.current = new WebSocket(
-                `ws://localhost:8088/join?roomID=${props.match.params.roomID}`
+                `wss://192.168.88.228:8088/join?roomID=${props.match.params.roomID}`
             );
 
             webSocketRef.current.addEventListener("open", () => {
