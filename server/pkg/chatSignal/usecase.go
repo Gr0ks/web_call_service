@@ -53,7 +53,8 @@ func JoinRoomRequestHandler(w http.ResponseWriter, r *http.Request) {
 
 		err := ws.ReadJSON(&msg.Message)
 		if err != nil {
-			log.Fatal("Reed Error: ", err)
+			log.Println("Reed Error: ", err)
+			return
 		}
 
 		msg.Client = ws

@@ -12,7 +12,7 @@ func main() {
 	http.HandleFunc("/create", chatSignal.CreateRoomRequestHandler)
 	http.HandleFunc("/join", chatSignal.JoinRoomRequestHandler)
 
-	log.Panicln("Starting Server on Port 8088")
+	log.Println("Starting Server on Port 8088")
 	err := http.ListenAndServe(":8088", nil)
 	if err != nil {
 		log.Fatal(err)
