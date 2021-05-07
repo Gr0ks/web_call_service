@@ -17,7 +17,7 @@ const Room = (props) => {
         const constraints = {
             audio: true,
             video: {
-                deviceId: cameras[1].deviceId,
+                deviceId: cameras[0].deviceId,
             },
         };
 
@@ -34,7 +34,7 @@ const Room = (props) => {
             userStream.current = stream;
 
             webSocketRef.current = new WebSocket(
-                `ws://localhost:8000/join?roomID=${props.match.params.roomID}`
+                `ws://localhost:8088/join?roomID=${props.match.params.roomID}`
             );
 
             webSocketRef.current.addEventListener("open", () => {
