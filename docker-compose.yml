@@ -1,0 +1,24 @@
+version: '3.4'
+
+services:
+
+    web_call_server:
+        container_name: web_call_server
+        build: 
+            context: ./server
+            dockerfile: Dockerfile
+        command: ./app
+        ports:
+            - 8088:8088
+    web_call_client:
+        build: 
+            context: ./client
+            dockerfile: Dockerfile
+        volumes:
+            - './client:/app'
+            - '/app/node_modules'
+        ports:
+            - 443:443
+        environment:
+            - CHOKIDAR_USEPOLLING=true
+        container_name: web_call_client
