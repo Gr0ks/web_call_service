@@ -13,6 +13,10 @@ type broadcastMsg struct {
 	Client  *websocket.Conn
 }
 
+type resp struct {
+	RoomID string `json:"room_id"`
+}
+
 var (
 	AllRooms room.RoomMap
 	upgrader = websocket.Upgrader{

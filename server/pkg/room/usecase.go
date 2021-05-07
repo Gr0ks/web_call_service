@@ -9,14 +9,14 @@ import (
 )
 
 func (r *RoomMap) Init() {
-	r.m = make(map[string][]Participant)
+	r.M = make(map[string][]Participant)
 }
 
 func (r *RoomMap) Get(roomID string) []Participant {
 	r.mutex.RLock()
 	defer r.mutex.RUnlock()
 
-	return r.m[roomID]
+	return r.M[roomID]
 }
 
 func (r *RoomMap) CreateRoom() string {
@@ -32,7 +32,7 @@ func (r *RoomMap) CreateRoom() string {
 	}
 
 	roomID := string(b)
-	r.m[roomID] = []Participant{}
+	r.M[roomID] = []Participant{}
 
 	return roomID
 }
@@ -44,12 +44,12 @@ func (r *RoomMap) InsertIntoRoom(roomID string, host bool, conn *websocket.Conn)
 	p := Participant{host, conn}
 
 	log.Println("Insert into Room with RoomID: ", roomID)
-	r.m[roomID] = append(r.m[roomID], p)
+	r.M[roomID] = append(r.M[roomID], p)
 }
 
 func (r *RoomMap) DeleteRoom(roomID string) {
 	r.mutex.Lock()
 	defer r.mutex.Unlock()
 
-	delete(r.m, roomID)
+	delete(r.M, roomID)
 }
