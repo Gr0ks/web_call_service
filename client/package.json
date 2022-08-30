@@ -16,7 +16,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react-refresh": "^1.1.0",
-    "vite": "^2.0.1"
+    "vite": "^2.9.13"
   },
   "author": "Ilya Petrenko",
   "license": "ISC"
